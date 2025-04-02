@@ -6,7 +6,7 @@ const QRCode = require("qrcode");
 const prisma = new PrismaClient();
 const axios = require("axios");
 
-const baseUrl = process.env.BASE_URL || "http://localhost:8000/api";
+const baseUrl = process.env.BASE_URL || "http://localhost:8000";
 
 router.get("/test", (req, res) => {
   res.send("API is working");
@@ -18,7 +18,7 @@ router.get("/listUrl", async (req, res) => {
       orderBy: {
         clicks: "desc", // Order by clicks in descending order
       },
-      take: 5, // Limit to 5 records
+      // take: 5, // Limit to 5 records
     });
     if(!Urls){
       return res.status(404).json("Not found Urls")
@@ -50,7 +50,7 @@ router.post("/shorten", async (req, res) => {
       const fullShortUrl = `${baseUrl}/${existingUrl.shortCode}`;
       const qrCode = await QRCode.toDataURL(fullShortUrl);
       return res.status(200).json({
-        shortUrl: fullShortUrl,
+        shortUrl: existingUrl.shortCode,
         qrCode,
         totalClick: existingUrl.clicks,
       });
@@ -68,7 +68,8 @@ router.post("/shorten", async (req, res) => {
       },
     });
 
-    const fullShortUrl = `${baseUrl}/${shortUrl.shortCode}`;
+    // const fullShortUrl = `${baseUrl}/${shortUrl.shortCode}`;
+    const fullShortUrl = shortUrl.shortCode;
     const qrCode = await QRCode.toDataURL(fullShortUrl);
 
     res.status(201).json({ shortUrl: fullShortUrl, qrCode });
