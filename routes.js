@@ -50,7 +50,7 @@ router.post("/shorten", async (req, res) => {
       const fullShortUrl = `${baseUrl}/${existingUrl.shortCode}`;
       const qrCode = await QRCode.toDataURL(fullShortUrl);
       return res.status(200).json({
-        shortUrl: existingUrl.shortCode,
+        shortUrl: fullShortUrl,
         qrCode,
         totalClick: existingUrl.clicks,
       });
@@ -68,8 +68,7 @@ router.post("/shorten", async (req, res) => {
       },
     });
 
-    // const fullShortUrl = `${baseUrl}/${shortUrl.shortCode}`;
-    const fullShortUrl = shortUrl.shortCode;
+    const fullShortUrl = `${baseUrl}/${shortUrl.shortCode}`;
     const qrCode = await QRCode.toDataURL(fullShortUrl);
 
     res.status(201).json({ shortUrl: fullShortUrl, qrCode });
