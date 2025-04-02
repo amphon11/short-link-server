@@ -111,7 +111,7 @@ router.post("/shorten", async (req, res) => {
       },
     });
 
-    const fullShortUrl = `${baseUrl}/${shortUrl.shortCode}`;
+    const fullShortUrl = `${baseUrl}/api/${shortUrl.shortCode}`;
     const qrCode = await QRCode.toDataURL(fullShortUrl);
 
     res.status(201).json({
