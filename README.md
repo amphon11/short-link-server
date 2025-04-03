@@ -46,8 +46,8 @@
 
 ### 1️⃣ Clone Repository
 ```bash
-git clone https://github.com/your-username/short-link.git
-cd url-shortener
+git clone https://github.com/your-username/server.git
+cd server
 ```
 ### 2️⃣ Install Dependencies
 ```bash
