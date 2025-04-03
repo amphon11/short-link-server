@@ -61,8 +61,8 @@ URL Shortener Application เป็นเครื่องมือสำหร
 
 ### 1️⃣ Clone Repository
 ```bash
-git clone https://github.com/your-username/server.git
-cd server
+git clone https://github.com/your-username/short-link-server.git
+cd short-link-server
 ```
 ### 2️⃣ Install Dependencies
 ```bash
