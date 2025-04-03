@@ -17,7 +17,7 @@ router.get("/listUrl", async (req, res) => {
   try {
     const Urls = await prisma.shortUrl.findMany({
       orderBy: {
-        clicks: "desc", // Order by clicks in descending order
+        createdAt: "desc", // Order by clicks in descending order
       },
       // take: 5, // Limit to 5 records
     });
